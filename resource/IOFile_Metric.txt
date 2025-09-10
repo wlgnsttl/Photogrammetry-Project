@@ -1,0 +1,13 @@
+focal(mm): 18.00
+pixel_size(um): 4.79
+pixel_num_in_x: 4928
+pixel_num_in_y: 3264
+PPx: 0.
+PPy: 0.
+K1: 5.09965342e-009
+K2: -4.19479528e-016
+P1: 0.
+P2: 0.
+K3: 5.57817191e-024
+
+
