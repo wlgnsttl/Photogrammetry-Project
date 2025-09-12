@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="3d_image_programming.cpp" />
+    <ClCompile Include="3d_image_programming.h" />
     <ClCompile Include="FrameCamera.cpp" />
     <ClCompile Include="GeometricTransformation.cpp" />
     <ClCompile Include="MidProject.cpp" />
@@ -145,7 +147,6 @@
   <ItemGroup>
     <ClInclude Include="FrameCamera.h" />
     <ClInclude Include="ReadParam.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="Project1.h" />
     <ClInclude Include="MidProject.h" />
     <ClInclude Include="GeometricTransformation.h" />

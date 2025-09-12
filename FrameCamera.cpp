@@ -1,4 +1,4 @@
-#include "main.h"
+#include "FrameCamera.h"
 
 cv::Mat_<double> GetRotationMatrix(double in_omega, double in_phi, double in_kappa) {
     // in: 카메라 외부 파라미터 중 오일러 각도 (omega, phi, kappa)

@@ -33,11 +33,14 @@
     <ClCompile Include="GeometricTransformation.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="3d_image_programming.h">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="3d_image_programming.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="ReadParam.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>

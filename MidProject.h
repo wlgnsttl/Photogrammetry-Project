@@ -3,7 +3,6 @@
 
 #include "ReadParam.h"
 #include "FrameCamera.h"
-
 #include "GeometricTransformation.h"
 
 void MidProject1();
