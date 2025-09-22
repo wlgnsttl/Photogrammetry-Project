@@ -1,4 +1,3 @@
-#include "main.h"
 #include "ReadParam.h"
 
 // IOP 정보를 파일에서 읽어와 구조체에 저장하는 함수

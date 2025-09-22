@@ -1,7 +1,8 @@
 #ifndef FRAME_CAMERA_INCLUDED
 #define FRAME_CAMERA_INCLUDED
 
-#include "main.h"
+#include "ReadParam.h"
+#include "GeometricTransformation.h"
 
 cv::Mat_<double> GetRotationMatrix(double in_omega, double in_phi, double in_kappa);
 
