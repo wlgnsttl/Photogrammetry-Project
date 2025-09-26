@@ -2,7 +2,7 @@
 
 int main() 
 {
-	week2_3();
+	week4_2();
 	
 
 	return 0;

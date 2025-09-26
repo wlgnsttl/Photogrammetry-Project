@@ -10,6 +10,8 @@
 void week2_1();
 void week2_2();
 void week2_3();
+void week4_1();
+void week4_2();
 
 
 #endif // !_3D_IMAGE_PROGRAMMING_H_
