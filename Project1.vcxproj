@@ -137,15 +137,19 @@
   <ItemGroup>
     <ClCompile Include="3d_image_programming.cpp" />
     <ClCompile Include="3d_image_programming.h" />
+    <ClCompile Include="3d_image_sample.cpp" />
     <ClCompile Include="FrameCamera.cpp" />
     <ClCompile Include="GeometricTransformation.cpp" />
     <ClCompile Include="MidProject.cpp" />
+    <ClCompile Include="Mid_train.cpp" />
     <ClCompile Include="ReadParam.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Project1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3d_image_sample.h" />
     <ClInclude Include="FrameCamera.h" />
+    <ClInclude Include="Mid_train.h" />
     <ClInclude Include="ReadParam.h" />
     <ClInclude Include="Project1.h" />
     <ClInclude Include="MidProject.h" />

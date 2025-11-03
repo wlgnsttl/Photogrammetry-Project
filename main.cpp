@@ -1,9 +1,9 @@
-#include "3d_image_programming.h"
+//#include "3d_image_sample.h"
+#include "Mid_train.h"
 
 int main() 
 {
-	week4_2();
-	
+	main_3d();
 
 	return 0;
 }
