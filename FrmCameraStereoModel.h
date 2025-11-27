@@ -1,7 +1,9 @@
 #pragma once
 
+#define _CRT_SECURE_NO_WARNINGS
 #include "FrmCamera.h"
 #include <random>
+
 
 #define RO_BX_CASE 100
 #define RO_BY_CASE 200

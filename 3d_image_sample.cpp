@@ -1,4 +1,11 @@
-#include "3d_image_sample.h"
+ï»¿#include "3d_image_sample.h"
+
+void main_3d(void)
+{
+	Practice_11_1();
+	Practice_10_1();
+
+}
 
 
 void Practice_2_1()
@@ -79,9 +86,9 @@ void Practice_3_1()
 	int colSize = inputImage.cols;
 
 	cv::Mat HSVImage;
-	cv::cvtColor(inputImage, HSVImage, cv::COLOR_BGR2HSV);	//HSV ·Î º¯È¯
+	cv::cvtColor(inputImage, HSVImage, cv::COLOR_BGR2HSV);	//HSV ë¡œ ë³€í™˜
 
-	// Brightness °¨¼Ò, V Ã¤³Î Àı¹İÀ¸·Î °¨¼Ò
+	// Brightness ê°ì†Œ, V ì±„ë„ ì ˆë°˜ìœ¼ë¡œ ê°ì†Œ
 	std::vector<cv::Mat> HSV_vec;
 	cv::split(HSVImage, HSV_vec);
 	for (int row = 0; row < rowSize; row++) {
@@ -91,17 +98,17 @@ void Practice_3_1()
 	}
 
 	cv::Mat HSVMerge, BGRImage;
-	cv::merge(HSV_vec, HSVMerge);	//HSV Ã¤³Î ÇÕÄ§
-	cv::cvtColor(HSVMerge, BGRImage, cv::COLOR_HSV2BGR);	//BGR ·Î º¯È¯
+	cv::merge(HSV_vec, HSVMerge);	//HSV ì±„ë„ í•©ì¹¨
+	cv::cvtColor(HSVMerge, BGRImage, cv::COLOR_HSV2BGR);	//BGR ë¡œ ë³€í™˜
 
 
 
 	// Rotation Resize
 	cv::Mat RotatedImage;
-	cv::rotate(inputImage, RotatedImage, cv::ROTATE_180);	// 180µµ È¸Àü
+	cv::rotate(inputImage, RotatedImage, cv::ROTATE_180);	// 180ë„ íšŒì „
 
 	cv::Mat ResizedImage;
-	cv::resize(inputImage, ResizedImage, cv::Size(204, 102));	// °¡·Î 204, ¼¼·Î 102 ·Î ¸®»çÀÌÁî
+	cv::resize(inputImage, ResizedImage, cv::Size(204, 102));	// ê°€ë¡œ 204, ì„¸ë¡œ 102 ë¡œ ë¦¬ì‚¬ì´ì¦ˆ
 }
 
 void Practice_3_2()
@@ -150,8 +157,8 @@ void Practice_3_3()
 	BuildRemapMatrix(imageSize, RotationMatrix_Inv, MapX, MapY);
 
 
-	// MapXY¸¦ ±â¹İÀ¸·Î resultÀÇ Æ¯Á¤ ÇÈ¼¿ÀÌ ¾îµğ¼­¿ÔÁö?¸¦ °è»êÇÏ°í 
-	// ÀÌ´Â °ÅÁø ½Ç¼öÀÌ¹Ç·Î ¼±Çü º¸°£ ¹æ¹ıÀ» »ç¿ëÇÏ¿© ¸ÅÇÎÇÑ´Ù´Â ÀÌ¾ß±â
+	// MapXYë¥¼ ê¸°ë°˜ìœ¼ë¡œ resultì˜ íŠ¹ì • í”½ì…€ì´ ì–´ë””ì„œì™”ì§€?ë¥¼ ê³„ì‚°í•˜ê³  
+	// ì´ëŠ” ê±°ì§„ ì‹¤ìˆ˜ì´ë¯€ë¡œ ì„ í˜• ë³´ê°„ ë°©ë²•ì„ ì‚¬ìš©í•˜ì—¬ ë§¤í•‘í•œë‹¤ëŠ” ì´ì•¼ê¸°
 	cv::Mat ResultImage;
 	cv::remap(inputImage, ResultImage, MapX, MapY, cv::InterpolationFlags::INTER_LINEAR);
 
@@ -162,7 +169,7 @@ void Practice_3_3()
 
 cv::Mat_<uchar> Practice_4_1()
 {
-	// ¸®»çÀÌÁî ÈÄ ¸ÅÇÎ ÇÏ´Â°Ç ¹Ù·Î ¾Ë°ÚÀ½. º¸°£ ¹æ¹ıÀº ÃÖ±ÙÁ¢ ÀÌ¿ôº¸°£
+	// ë¦¬ì‚¬ì´ì¦ˆ í›„ ë§¤í•‘ í•˜ëŠ”ê±´ ë°”ë¡œ ì•Œê² ìŒ. ë³´ê°„ ë°©ë²•ì€ ìµœê·¼ì ‘ ì´ì›ƒë³´ê°„
 	cv::Mat_<uchar> inputImage = cv::imread("resource/lena.jpg", cv::IMREAD_GRAYSCALE);
 	int RowSize = inputImage.rows;
 	int ColSize = inputImage.cols;
@@ -262,12 +269,12 @@ cv::Mat_<uchar>  Practice_4_2() // Bilinear Interpolation
 	return ResultImage;
 }
 
-void Practice_7_1() // 3D Transformation Scale º¯È¯
+void Practice_7_1() // 3D Transformation Scale ë³€í™˜
 {
 	cv::Mat inputImage = cv::imread("resource/100_0007_0001.JPG", cv::IMREAD_UNCHANGED);
 	std::cout << inputImage.cols << "\t" << inputImage.rows << std::endl;
 
-	// ¿øº» ¿µ»óº¸´Ù 2¹è ÀÛ°Ô ¸®»çÀÌÁî
+	// ì›ë³¸ ì˜ìƒë³´ë‹¤ 2ë°° ì‘ê²Œ ë¦¬ì‚¬ì´ì¦ˆ
 	cv::Mat ReducedImage;
 	int reduce_factor = 2.;
 	cv::resize(inputImage, ReducedImage, cv::Size(inputImage.cols / reduce_factor, inputImage.rows / reduce_factor));
@@ -276,21 +283,21 @@ void Practice_7_1() // 3D Transformation Scale º¯È¯
 	cv::Mat_<float> MapX = cv::Mat(ReducedImage.rows, ReducedImage.cols, CV_32FC1);
 	cv::Mat_<float> MapY = cv::Mat(ReducedImage.rows, ReducedImage.cols, CV_32FC1);
 
-	float F_Pixel = 8800. / 2.4;				//Ä«¸Ş¶ó ÃÊÁ¡°Å¸® (ÇÈ¼¿´ÜÀ§)
-	float FNumber = F_Pixel / reduce_factor;	//ÇÈ¼¿ ´ÜÀ§ ÃÊÁ¡°Å¸®ÀÌ±â ¶§¹®¿¡ 0.5¹è
+	float F_Pixel = 8800. / 2.4;				//ì¹´ë©”ë¼ ì´ˆì ê±°ë¦¬ (í”½ì…€ë‹¨ìœ„)
+	float FNumber = F_Pixel / reduce_factor;	//í”½ì…€ ë‹¨ìœ„ ì´ˆì ê±°ë¦¬ì´ê¸° ë•Œë¬¸ì— 0.5ë°°
 
-	float New_FNumber = FNumber * 2;			//»õ·Î¿î ÃÊÁ¡°Å¸® -> È®´ë Ãà¼Ò
+	float New_FNumber = FNumber * 2;			//ìƒˆë¡œìš´ ì´ˆì ê±°ë¦¬ -> í™•ëŒ€ ì¶•ì†Œ
 
-	//ÇÈ¼¿ Áß½É ÁÂÇ¥(¸®»çÀÌÁîµÈ ÀÌ¹ÌÁöÀÇ)
+	//í”½ì…€ ì¤‘ì‹¬ ì¢Œí‘œ(ë¦¬ì‚¬ì´ì¦ˆëœ ì´ë¯¸ì§€ì˜)
 	float Co = ReducedImage.cols / 2.;			
 	float Ro = ReducedImage.rows / 2.;
 
-	// 3D Transformation Scale º¯È¯- in Camera Coordinate System
+	// 3D Transformation Scale ë³€í™˜- in Camera Coordinate System
 	cv::Mat_<float> output_vec = cv::Mat(3, 1, CV_32F);
 	cv::Mat_<float> input_vec = cv::Mat(3, 1, CV_32F);
 	for (int r = 0; r < ReducedImage.rows; r++) {
 		for (int c = 0; c < ReducedImage.cols; c++) {
-			// ¿µ»óÁÂÇ¥°è¸¦ Ä«¸Ş¶ó ÁÂÇ¥°è·Î º¯È¯ (´ÜÀ§´Â ÇÈ¼¿)
+			// ì˜ìƒì¢Œí‘œê³„ë¥¼ ì¹´ë©”ë¼ ì¢Œí‘œê³„ë¡œ ë³€í™˜ (ë‹¨ìœ„ëŠ” í”½ì…€)
 			output_vec(0) = c - Co;
 			output_vec(1) = -(r - Ro);
 			output_vec(2) = -New_FNumber;
@@ -308,7 +315,7 @@ void Practice_7_1() // 3D Transformation Scale º¯È¯
 	cv::remap(ReducedImage, image3, MapX, MapY, cv::INTER_LINEAR);
 
 
-	// 3D Transformation Scale º¯È¯- in Image Coordinate System
+	// 3D Transformation Scale ë³€í™˜- in Image Coordinate System
 	cv::Mat_<float> Homography = cv::Mat::eye(3, 3, CV_64FC1);
 	float Weight = New_FNumber / FNumber;
 	Homography(2, 2) = Weight;
@@ -332,7 +339,7 @@ void Practice_7_1() // 3D Transformation Scale º¯È¯
 	cv::waitKey(0);
 }
 
-void Practice_7_2() // 3D Transformation Translation º¯È¯
+void Practice_7_2() // 3D Transformation Translation ë³€í™˜
 {
 	cv::Mat inputImage = cv::imread("resource/100_0007_0001.JPG", cv::IMREAD_UNCHANGED);
 	std::cout << inputImage.cols << "\t" << inputImage.rows << std::endl;
@@ -378,7 +385,7 @@ void Practice_7_2() // 3D Transformation Translation º¯È¯
 	cv::waitKey(0);
 }
 
-void Practice_7_3() // 3D Transformation rotation º¯È¯
+void Practice_7_3() // 3D Transformation rotation ë³€í™˜
 {
 	cv::Mat inputImage = cv::imread("resource/010264.png", cv::IMREAD_UNCHANGED);
 	std::cout << inputImage.cols << "\t" << inputImage.rows << std::endl;
@@ -469,7 +476,7 @@ cv::Mat_<double> GetRoatationMatrix(double Angle, cv::Point2d pivotPoint) {
 	RotationMatrix(1, 0) = sin(AngleRad);	RotationMatrix(1, 1) = cos(AngleRad);	RotationMatrix(1, 2) = 0.;
 	RotationMatrix(2, 0) = 0.;				RotationMatrix(2, 1) = 0.;				RotationMatrix(2, 2) = 1.;
 
-	// ¿øÁ¡À¸·Î ÇÇº¿Æ÷ÀÎÆ®¸¦ ¿Å±â°í, È¸Àü(¹İ½Ã°è)ÀÌÁö¸¸ yÃàÀÌ -¹æÇâÀÌ¹Ç·Î ½Ã°è¹æÇâ, ±×¸®°í ´Ù½Ã º¹±¸
+	// ì›ì ìœ¼ë¡œ í”¼ë´‡í¬ì¸íŠ¸ë¥¼ ì˜®ê¸°ê³ , íšŒì „(ë°˜ì‹œê³„)ì´ì§€ë§Œ yì¶•ì´ -ë°©í–¥ì´ë¯€ë¡œ ì‹œê³„ë°©í–¥, ê·¸ë¦¬ê³  ë‹¤ì‹œ ë³µêµ¬
 	OutRotationMatrix = PivotMatrix * RotationMatrix * PivotMatrix.inv();
 
 	return OutRotationMatrix;
@@ -513,7 +520,7 @@ void ComputeOutImageSize(cv::Size inputSize, cv::Mat_<double> src2dstMat, cv::Si
 
 void BuildRemapMatrix(cv::Size& OutSize, cv::Mat_<double>& dst2srcMat, cv::Mat_<float>& MapX, cv::Mat_<float>& MapY)
 {
-	// ÀÎ¹ö½º ¸ÅÆ®¸¯½º¸¦ ÅëÇØ ÀÌ Á¡ÀÌ ¾îµğ¿¡¼­ ¿Â°Å³ë? ¸¦ °è»ê
+	// ì¸ë²„ìŠ¤ ë§¤íŠ¸ë¦­ìŠ¤ë¥¼ í†µí•´ ì´ ì ì´ ì–´ë””ì—ì„œ ì˜¨ê±°ë…¸? ë¥¼ ê³„ì‚°
 	MapX.create(OutSize);
 	MapY.create(OutSize);
 
@@ -524,17 +531,295 @@ void BuildRemapMatrix(cv::Size& OutSize, cv::Mat_<double>& dst2srcMat, cv::Mat_<
 			cv::Mat_<double> dstPoint(3, 1, CV_64FC1);
 			cv::Mat_<double> srcPoint(3, 1, CV_64FC1);
 
-			//¸¸¾à Homographyº¯È¯ÀÌ¶ó¸é
+			//ë§Œì•½ Homographyë³€í™˜ì´ë¼ë©´
 			//double w = srcPoint(2, 0);
 			//MapXptr[col] = (float)(srcPoint(0, 0) / w);
 			//MapYptr[col] = (float)(srcPoint(1, 0) / w);
 
-			dstPoint(0, 0) = col;   dstPoint(1, 0) = row;   dstPoint(2, 0) = 1.;	//µ¿Â÷ ÁÂÇ¥ ÀÔ·Â
-			srcPoint = dst2srcMat * dstPoint;	//Ãâ·Â ¿µ»óÀÇ Æ÷ÀÎÆ®°¡ ÀÔ·Â¿µ»óÀÇ ¾îµğ¼­ ¿Â°ÅÁö?
+			dstPoint(0, 0) = col;   dstPoint(1, 0) = row;   dstPoint(2, 0) = 1.;	//ë™ì°¨ ì¢Œí‘œ ì…ë ¥
+			srcPoint = dst2srcMat * dstPoint;	//ì¶œë ¥ ì˜ìƒì˜ í¬ì¸íŠ¸ê°€ ì…ë ¥ì˜ìƒì˜ ì–´ë””ì„œ ì˜¨ê±°ì§€?
 
-			//¸ÅÇÎ Å×ÀÌºí¿¡ ±â·Ï
+			//ë§¤í•‘ í…Œì´ë¸”ì— ê¸°ë¡
 			MapXptr[col] = static_cast<float>(srcPoint(0, 0));
 			MapYptr[col] = static_cast<float>(srcPoint(1, 0));
 		}
 	}
+}
+
+void Practice_10_1()
+{
+	CFrmCamera L_Cam;
+	CFrmCamera R_Cam;
+
+	// Camera Intrinsic Parameter
+	double f = 8.5797E-3;
+	double pixelSizeX = 2.34527E-6;
+	double pixelSizeY = 2.34527E-6;
+	int XSize = 5472;
+	int YSize = 3648;
+	double PPS_X = 0.;
+	double PPS_Y = 0.;
+
+	L_Cam.SetCameraPara(f, pixelSizeX, pixelSizeY, XSize, YSize, PPS_X, PPS_Y);
+	R_Cam.SetCameraPara(f, pixelSizeX, pixelSizeY, XSize, YSize, PPS_X, PPS_Y);
+
+	// 100_0005_0057.JPG	292313.514049	4147298.647809	184.393478 - 0.096028 - 0.144070 - 17.105062
+	// 100_0005_0058.JPG	292325.935164	4147325.588103	184.354621 - 0.070608 - 0.171808 - 15.965594
+	double ToRad = acos(-1) / 180.;
+	double ToDeg = 1. / ToRad;
+
+	// Left Camera
+	double Bx = 292313.514049;
+	double By = 4147298.647809;
+	double Bz = 184.393478;
+	double Omega = -0.096028 * ToRad;
+	double Phi = -0.144070 * ToRad;
+	double Kappa = -17.105062 * ToRad;
+	L_Cam.SetupFCamModel(Bx, By, Bz, Omega, Phi, Kappa);
+
+	// Right Camera
+	Bx = 292325.935164;
+	By = 4147325.588103;
+	Bz = 184.354621;
+	Omega = -0.070608 * ToRad;
+	Phi = -0.171808 * ToRad;
+	Kappa = -15.965594 * ToRad;
+	R_Cam.SetupFCamModel(Bx, By, Bz, Omega, Phi, Kappa);
+
+	// Set Stereo Model
+	CFrmCameraStereoModel stereo_model;
+	stereo_model.SetLeftModel(&L_Cam);
+	stereo_model.SetRightModel(&R_Cam);
+
+	// Generate PCD from Tie Point Matching Result
+	std::vector<std::vector<double>> XYZ_Vec;
+
+	char tie_out_name[1024];
+	strcpy(tie_out_name, "MyTiePoint_Output.txt");
+	FILE* tie_out_ptr;
+	tie_out_ptr = fopen(tie_out_name, "rt");
+
+	double GX, GY, GZ;
+	double Lcol = 0.;
+	double Lrow = 0.;
+	double Rcol = 0.;
+	double Rrow = 0.;
+	while (fscanf(tie_out_ptr, "%lf	%lf	%lf	%lf", &Lcol, &Lrow, &Rcol, &Rrow) == 4) {
+		stereo_model.GetXYZ(Lcol, Lrow, Rcol, Rrow, GX, GY, GZ);
+		std::vector<double> one_xyz;
+		one_xyz.push_back(GX);
+		one_xyz.push_back(GY);
+		one_xyz.push_back(GZ);
+		XYZ_Vec.push_back(one_xyz);
+	}
+	fclose(tie_out_ptr);
+
+	// ì €ì¥
+	FILE* out = fopen("MyXYZ_Result.txt", "w");
+	for (auto& p : XYZ_Vec) {
+		fprintf(out, "%lf %lf %lf\n", p[0], p[1], p[2]);
+	}
+	fclose(out);
+}
+
+void Practice_11_1()
+{
+	/*
+	 * ë‘ ê°œì˜ ì´ë¯¸ì§€ë¥¼ ë¶ˆëŸ¬ì˜¨ë‹¤ ì»¬ëŸ¬ë¡œ
+	 */
+	cv::Mat image1, image2;
+	image1 = cv::imread("resource/100_0005_0057.jpg");
+	image2 = cv::imread("resource/100_0005_0058.jpg");
+
+	/* 
+	 * ë‘ ê°œì˜ ì»¬ëŸ¬ì´ë¯¸ì§€ë¥¼ ê·¸ë ˆì´ë¡œ ë°”ê¾¼ë‹¤
+	 */
+	cv::Mat gray1, gray2;
+	cv::cvtColor(image1, gray1, cv::COLOR_BGR2GRAY);
+	cv::cvtColor(image2, gray2, cv::COLOR_BGR2GRAY);
+
+
+	cv::Mat gray3, gray4;
+
+	cv::Mat GaussianKernel;
+	GaussianKernel = cv::getGaussianKernel(5, 0);
+	cv::Mat GaussianKernel_2d = GaussianKernel * GaussianKernel.t();
+
+	cv::filter2D(gray1, gray3, -1, GaussianKernel_2d);
+	cv::filter2D(gray2, gray4, -1, GaussianKernel_2d);
+
+
+	cv::Mat_<char> LaplacianKernel(3, 3, CV_8SC1);
+	LaplacianKernel(0, 0) = -1;	LaplacianKernel(0, 1) = -1;	LaplacianKernel(0, 2) = -1;
+	LaplacianKernel(1, 0) = -1;	LaplacianKernel(1, 1) = 9;	LaplacianKernel(1, 2) = -1;
+	LaplacianKernel(2, 0) = -1;	LaplacianKernel(2, 1) = -1;	LaplacianKernel(2, 2) = -1;
+
+	cv::filter2D(gray3, gray3, -1, LaplacianKernel);
+	cv::filter2D(gray4, gray4, -1, LaplacianKernel);
+
+
+
+	/*
+	 * ìµœëŒ€ 30000ê°œì˜ íŠ¹ì§•ì  ì¶”ì¶œ
+	 * ìƒìœ„ 30000ê°œë§Œì„ ë‚¨ê¸´ë‹¤ëŠ” ì´ì•¼ê¸°
+	 * 
+	 * SIFT ê¸°ë²•ì„ ì‚¬ìš©í•´ ì´ë¯¸ì§€ 2ì¥ì—ì„œ íŠ¹ì§•ì ì„ ê²€ì¶œí•˜ê³ ,
+	 * ê·¸ ê²°ê³¼ëŠ” SIFT ê°ì²´ ë‚´ë¶€ê°€ ì•„ë‹ˆë¼ ê°ê°ì˜ ë²¡í„°(image1Features, image2Features)ì— ì €ì¥ëœë‹¤
+	 */
+	// Feature Detection
+	cv::Ptr<cv::Feature2D> SIFT = cv::SIFT::create(30000);
+	std::vector<cv::KeyPoint> image1Features, image2Features;
+	SIFT->detect(gray3, image1Features);
+	SIFT->detect(gray4, image2Features);
+
+	/*
+	 * íŠ¹ì§•ì  ì‹œê°í™” ì½”ë“œ
+	 */
+	cv::Mat FeatureMap1, FeatureMap2;
+	cv::drawKeypoints(gray1, image1Features, FeatureMap1, cv::Scalar(255, 0, 0));
+	cv::drawKeypoints(gray2, image2Features, FeatureMap2, cv::Scalar(255, 0, 0));
+
+
+	/*
+	 * íŠ¹ì§•ì  ìœ„ì¹˜(keypoint)ë§Œ ì•Œê³  ìˆëŠ” ìƒíƒœì—ì„œ, 
+	 * ê·¸ ì£¼ë³€ì˜ íŒ¨í„´ì„ ìˆ˜ì¹˜í™”í•œ descriptor(ë²¡í„°)ë¥¼ ê³„ì‚°í•˜ëŠ” ë‹¨ê³„
+	 * ê·¸ ì  ì£¼ë³€ì´ ì–´ë–¤ í˜•íƒœì¸ê°€? -> 128 * n Matrixë¡œ í‘œí˜„
+	 */
+	// Feature Description
+	cv::Mat image1Descriptor, image2Descriptor;
+	SIFT->compute(gray3, image1Features, image1Descriptor);
+	SIFT->compute(gray4, image2Features, image2Descriptor);
+
+
+	/* 
+	 * ë¸Œë£¨íŠ¸ í¬ìŠ¤ ë°©ì‹ìœ¼ë¡œ í•˜ë‚˜ì˜ ë””ìŠ¤í¬ë¦½í„°ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë‹¤ë¥¸ ì´ë¯¸ì§€ì˜ ëª¨ë“  ë””ìŠ¤í¬ë¦½í„°ë¥¼ ëŒ€ì¡°í•˜ì—¬ ê±°ë¦¬ë¥¼ ê³„ì‚°
+	 * ê° descriptorë§ˆë‹¤ kê°œ(best K) ë§¤ì¹­ í›„ë³´ë¥¼ ì €ì¥í•˜ëŠ” 2ì°¨ì› vector
+	 * 
+	 * knnMatches[i		= ië²ˆ íŠ¹ì§•ì ì˜ ë§¤ì¹­ í›„ë³´ ë¦¬ìŠ¤íŠ¸
+	 * knnMatches[i][0] = ê°€ì¥ ê°€ê¹Œìš´ match
+	 * knnMatches[i][1] = ë‘ ë²ˆì§¸ë¡œ ê°€ê¹Œìš´ match
+	 * 
+	 * 2ì˜ ëœ»ì€ 2ê°œ ë§¤ì¹­ í›„ë³´ (ê±°ë¦¬ìˆœ) ì„ ì €ì¥í•˜ê² ë‹¤
+	 */
+	// Feature Matching
+	cv::BFMatcher MATCHER(cv::NORM_L2);
+	std::vector<std::vector<cv::DMatch>> knnMatches;
+	MATCHER.knnMatch(image1Descriptor, image2Descriptor, knnMatches, 2);
+
+	// ìµœê·¼ì ‘ ë§¤ì¹­ì„ ëª¨ë‘ í‘œì‹œ
+	std::vector<cv::DMatch> closestMatches;
+	closestMatches.reserve(knnMatches.size());
+
+	for (int i = 0; i < knnMatches.size(); i++) {
+		if (knnMatches[i].size() >= 1) {
+			closestMatches.push_back(knnMatches[i][0]);
+		}
+	}
+
+	// ì‹œê°í™”
+	cv::Mat ClosestMatchResult;
+	cv::drawMatches(gray1, image1Features, gray2, image2Features, closestMatches, ClosestMatchResult);
+
+
+	/*
+	 * ì¢‹ì€ ë§¤ì¹­ë§Œì„ í•„í„°ë§ í•œë‹¤ëŠ” ëœ»
+	 * ê²°ê³¼ëŠ” good_matchesì— ì €ì¥í•œë‹¤
+	 * 
+	 * ë½‘ì€ ë‘ ë§¤ì¹­ í›„ë³´ì¤‘ì— ìœ ì‚¬ë„ê°€ m1ì´ ì¼ì • ë¹„ìœ¨ ì´ìƒ ë†’ì€ ê²½ìš°ì—ë§Œ ê·¸ê±¸ ì±„íƒí•˜ê² ë‹¤ëŠ” ëœ»
+	 */
+	const float ratio = 0.75;
+	std::vector<cv::DMatch> good_matches;
+	for (int i = 0; i < knnMatches.size(); i++) {
+		if (knnMatches[i].size() < 2) 
+			continue;
+
+		cv::DMatch& m1 = knnMatches[i][0];
+		cv::DMatch& m2 = knnMatches[i][1];
+		if (m1.distance < ratio * m2.distance) {
+			good_matches.push_back(m1);
+
+		}
+	}
+
+
+	/*
+	 * good matchë¡œ ì„ ì •ëœ ì ì˜ ì™¼ìª½ ì´ë¯¸ì§€ì™€ ì˜¤ë¥¸ìª½ ì´ë¯¸ì§€ì˜ ì¢Œí‘œë¥¼ ë½‘ëŠ”ë‹¤
+	 * 
+	 * ê·¸ë¦¬ê³  ê²°ê³¼ë¥¼ MatchResultì— ë‚˜íƒ€ë‚¸ë‹¤
+	 */
+	std::vector<cv::Point2f> pts1, pts2;
+	for (int i = 0; i < good_matches.size(); i++) {
+		pts1.push_back(image1Features[good_matches[i].queryIdx].pt);
+		pts2.push_back(image2Features[good_matches[i].trainIdx].pt);
+	}
+	cv::Mat MatchResult;
+	cv::drawMatches(gray1, image1Features, gray2, image2Features, good_matches, MatchResult);
+
+	/*
+	 * ì´ì œ ë§¤ì¹­ëœ ì ì—ì„œ ì§„ì§œ ë§ëŠ” ì ë§Œ ê³¨ë¼ë‚´ë³´ì
+	 * ê¸°í•˜í•™ì  ê´€ê³„ì— ë”°ë¼ ë§ëŠ” ì ë§Œì„ ê³¨ë¼ë‚´ìëŠ”ê±°ë‹¤
+	 * F matrixë¥¼ ì°¾ê³  ê·¸ì— ë”°ë¼ ì´ ì¡°ê±´ì— ë§ì§€ ì•ŠëŠ” ì ë“¤ì€ ê±¸ëŸ¬ë²„ë¦¬ëŠ”ê±°ë‹¤
+	 * 
+	 * ì—í”¼í´ë¼ ë¼ì¸ ì–´ì©Œêµ¬ ê·¸ëŸ° ê°œë…ì´ ìˆëŠ” ê²ƒ ê°™ë‹¤
+ 	 */
+
+	cv::Mat MatchResultInlier;
+	std::vector<cv::DMatch> inlierMatches;
+
+	// RANSAC
+	if (pts1.size() >= 8) {
+		std::vector<uchar> inlier_mask;
+		cv::Mat F = cv::findFundamentalMat(pts1, pts2, cv::FM_RANSAC, 3, 0.99, inlier_mask);
+
+		for (int i = 0; i < good_matches.size(); i++) {
+			if (inlier_mask[i]) {
+				inlierMatches.push_back(good_matches[i]);
+			}
+		}
+
+		
+		cv::drawMatches(gray1, image1Features, gray2, image2Features, inlierMatches, MatchResultInlier);
+
+	}
+
+	//cv::namedWindow("Image1", cv::WINDOW_NORMAL);
+	//cv::namedWindow("Image2", cv::WINDOW_NORMAL);
+	//cv::namedWindow("Keypoints1", cv::WINDOW_NORMAL);
+	//cv::namedWindow("Keypoints2", cv::WINDOW_NORMAL);
+	//cv::namedWindow("Matches", cv::WINDOW_NORMAL);
+	//cv::namedWindow("Good Matches", cv::WINDOW_NORMAL);
+	//cv::namedWindow("MatchResultInlier", cv::WINDOW_NORMAL);
+
+	//cv::imshow("Image1", gray1);
+	//cv::imshow("Image2", gray2);
+	//cv::imshow("Keypoints1", FeatureMap1);
+	//cv::imshow("Keypoints2", FeatureMap2);
+	//cv::imshow("Matches", ClosestMatchResult);
+	//cv::imshow("Good Matches", MatchResult);
+	//cv::imshow("MatchResultInlier", MatchResultInlier);
+
+
+	//cv::waitKey(0);
+
+	// --- Tie Point ì €ì¥ ì½”ë“œ ì¶”ê°€ ---
+	FILE* fp = fopen("MyTiePoint_Output.txt", "w");
+	if (!fp) {
+		printf("Error opening output file\n");
+	}
+	else {
+		for (int i = 0; i < inlierMatches.size(); i++) {
+			int idxL = inlierMatches[i].queryIdx;
+			int idxR = inlierMatches[i].trainIdx;
+
+			float Lcol = image1Features[idxL].pt.x;
+			float Lrow = image1Features[idxL].pt.y;
+			float Rcol = image2Features[idxR].pt.x;
+			float Rrow = image2Features[idxR].pt.y;
+
+			// ê³µë°± êµ¬ë¶„ìë¡œ ì €ì¥
+			fprintf(fp, "%lf %lf %lf %lf\n", Lcol, Lrow, Rcol, Rrow);
+		}
+		fclose(fp);
+	}
+
 }

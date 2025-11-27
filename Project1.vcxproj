@@ -126,12 +126,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\OpenCV_451\DLL;C:\OpenCV_451;C:\OpenCV_451\opencv2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_world451.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\OpenCV_451\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -139,9 +143,9 @@
     <ClCompile Include="3d_image_programming.h" />
     <ClCompile Include="3d_image_sample.cpp" />
     <ClCompile Include="FrameCamera.cpp" />
+    <ClCompile Include="FrmCamera.cpp" />
+    <ClCompile Include="FrmCameraStereoModel.cpp" />
     <ClCompile Include="GeometricTransformation.cpp" />
-    <ClCompile Include="MidProject.cpp" />
-    <ClCompile Include="Mid_train.cpp" />
     <ClCompile Include="ReadParam.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Project1.cpp" />
@@ -149,16 +153,89 @@
   <ItemGroup>
     <ClInclude Include="3d_image_sample.h" />
     <ClInclude Include="FrameCamera.h" />
-    <ClInclude Include="Mid_train.h" />
+    <ClInclude Include="FrmCamera.h" />
+    <ClInclude Include="FrmCameraStereoModel.h" />
     <ClInclude Include="ReadParam.h" />
     <ClInclude Include="Project1.h" />
-    <ClInclude Include="MidProject.h" />
     <ClInclude Include="GeometricTransformation.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="resource\GCP.txt" />
     <Text Include="resource\input_EOP.txt" />
     <Text Include="resource\IOFile_Metric.txt" />
+    <Text Include="resource\MatchOut_100_0005_0057_100_0005_0058_PL4_PCD_TP.txt" />
+    <Text Include="resource\out_EOP.txt" />
+    <Text Include="resource\out_IOP.txt" />
+    <Text Include="resource\tieout.txt" />
+    <Text Include="resource\tiepoint.txt" />
+    <Text Include="resource\tiepoint_for_final_exam.txt" />
+    <Text Include="resource\xyz_out.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\010264.png" />
+    <Image Include="resource\100_0005_0057.JPG" />
+    <Image Include="resource\100_0005_0058.JPG" />
+    <Image Include="resource\100_0007_0001.JPG" />
+    <Image Include="resource\123.png" />
+    <Image Include="resource\lena.jpg" />
+    <Image Include="resource\R0047607.JPG" />
+    <Image Include="resource\R0047608.JPG" />
+    <Image Include="resource\R0047609.JPG" />
+    <Image Include="resource\R0047610.JPG" />
+    <Image Include="resource\R0047611.JPG" />
+    <Image Include="resource\R0047612.JPG" />
+    <Image Include="resource\R0047613.JPG" />
+    <Image Include="resource\R0047614.JPG" />
+    <Image Include="resource\R0047615.JPG" />
+    <Image Include="resource\R0047616.JPG" />
+    <Image Include="resource\R0047617.JPG" />
+    <Image Include="resource\R0047618.JPG" />
+    <Image Include="resource\R0047619.JPG" />
+    <Image Include="resource\R0047620.JPG" />
+    <Image Include="resource\R0047621.JPG" />
+    <Image Include="resource\R0047622.JPG" />
+    <Image Include="resource\R0047623.JPG" />
+    <Image Include="resource\R0047624.JPG" />
+    <Image Include="resource\R0047625.JPG" />
+    <Image Include="resource\R0047626.JPG" />
+    <Image Include="resource\R0047627.JPG" />
+    <Image Include="resource\R0047628.JPG" />
+    <Image Include="resource\R0047629.JPG" />
+    <Image Include="resource\R0047630.JPG" />
+    <Image Include="resource\R0047631.JPG" />
+    <Image Include="resource\R0047632.JPG" />
+    <Image Include="resource\R0047633.JPG" />
+    <Image Include="resource\R0047634.JPG" />
+    <Image Include="resource\R0047635.JPG" />
+    <Image Include="resource\R0047636.JPG" />
+    <Image Include="resource\R0047637.JPG" />
+    <Image Include="resource\R0047638.JPG" />
+    <Image Include="resource\R0047639.JPG" />
+    <Image Include="resource\R0047640.JPG" />
+    <Image Include="resource\R0047641.JPG" />
+    <Image Include="resource\R0047642.JPG" />
+    <Image Include="resource\R0047643.JPG" />
+    <Image Include="resource\R0047644.JPG" />
+    <Image Include="resource\R0047645.JPG" />
+    <Image Include="resource\R0047646.JPG" />
+    <Image Include="resource\R0047647.JPG" />
+    <Image Include="resource\R0047648.JPG" />
+    <Image Include="resource\R0047649.JPG" />
+    <Image Include="resource\R0047650.JPG" />
+    <Image Include="resource\R0047651.JPG" />
+    <Image Include="resource\R0047652.JPG" />
+    <Image Include="resource\R0047653.JPG" />
+    <Image Include="resource\R0047654.JPG" />
+    <Image Include="resource\R0047655.JPG" />
+    <Image Include="resource\R0047656.JPG" />
+    <Image Include="resource\R0047657.JPG" />
+    <Image Include="resource\R0047658.JPG" />
+    <Image Include="resource\R0047659.JPG" />
+    <Image Include="resource\R0047660.JPG" />
+    <Image Include="resource\R0047661.JPG" />
+    <Image Include="resource\R0047662.JPG" />
+    <Image Include="resource\R0047663.JPG" />
+    <Image Include="resource\R0047664.JPG" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

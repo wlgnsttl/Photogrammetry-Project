@@ -12,10 +12,12 @@
 */
 #pragma once
 
+#define _CRT_SECURE_NO_WARNINGS
 #include <fstream>
 #include <string>
 #include <vector>
 #include <opencv.hpp>
+
 
 using namespace std;
 #define TCHAR char

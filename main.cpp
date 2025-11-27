@@ -1,5 +1,4 @@
-//#include "3d_image_sample.h"
-#include "Mid_train.h"
+#include "3d_image_sample.h"
 
 int main() 
 {
